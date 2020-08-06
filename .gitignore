@@ -58,3 +58,12 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+.idea/.gitignore
+.idea/.idea.ShaderVariantCollectionTest/.idea/.gitignore
+.idea/.idea.ShaderVariantCollectionTest/.idea/contentModel.xml
+.idea/.idea.ShaderVariantCollectionTest/.idea/encodings.xml
+.idea/.idea.ShaderVariantCollectionTest/.idea/indexLayout.xml
+.idea/.idea.ShaderVariantCollectionTest/.idea/modules.xml
+.idea/.idea.ShaderVariantCollectionTest/.idea/projectSettingsUpdater.xml
+.idea/.idea.ShaderVariantCollectionTest/riderModule.iml
+.idea/.idea.ShaderVariantCollectionTest/.idea/vcs.xml

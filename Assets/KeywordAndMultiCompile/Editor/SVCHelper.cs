@@ -62,7 +62,7 @@ public class SVCHelper
     #endif
     }
 
-    private static ShaderGUIDInfo[] GetAthenaShaderGUIdList2(Shader[] shaders)
+    private static ShaderGUIDInfo[] GetAthenaShaderGUIdList(Shader[] shaders)
     {
         if (shaders == null || shaders.Length == 0)
         {
@@ -77,13 +77,15 @@ public class SVCHelper
 
             ShaderGUIDInfo guidInfo = new ShaderGUIDInfo();
             guidInfo.shader = shader;
-            guidInfo.guid = GetShaderGUID(shader);
+            // guidInfo.guid = GetShaderGUID(shader);
+            guidInfo.guid = GetShaderGUID2(shader);
             result[i] = guidInfo;
         }
 
         return result;
     }
-
+    
+    // 获取shader的guid //
     private static string GetShaderGUID(Shader shader)
     {
         if (shader == null)
@@ -97,25 +99,17 @@ public class SVCHelper
         string path = "";
     #endif
         
-        string metaPath = GetMetaFilePath2(path);
+        string metaPath = GetMetaFilePath(path);
         return GetGUIDFromMetaFile(metaPath);
     }
 
-    private static StringBuilder m_tempSB = new StringBuilder();
-    private static string GetMetaFilePath(string path)
+    private static string GetShaderGUID2(Shader shader)
     {
-        if (string.IsNullOrEmpty(path))
-        {
-            return null;
-        }
-
-        m_tempSB.Clear();
-        m_tempSB.Append(path);
-        m_tempSB.Append(".meta");
-        return m_tempSB.ToString();
+        string path = AssetDatabase.GetAssetPath(shader);
+        return AssetDatabase.AssetPathToGUID(path);
     }
-    
-    private static string GetMetaFilePath2(string path)
+
+    private static string GetMetaFilePath(string path)
     {
         if (string.IsNullOrEmpty(path))
         {
@@ -165,7 +159,7 @@ public class SVCHelper
         Shader shader1 = Shader.Find("MJ/Test_shaderfeature");
 
         Shader[] athenaShaders = new Shader[] { shader1 };
-        ShaderGUIDInfo[] shaderGUIDInfos = GetAthenaShaderGUIdList2(athenaShaders);
+        ShaderGUIDInfo[] shaderGUIDInfos = GetAthenaShaderGUIdList(athenaShaders);
 
         if (shaderGUIDInfos == null || shaderGUIDInfos.Length == 0)
         {
